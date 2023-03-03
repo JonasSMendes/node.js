@@ -1,5 +1,11 @@
-let nome:string = 'jonas'
+const matematica = require('./matematica')
 
-let idade:number = 21
+let n1:number = 10
 
-console.log(`meu nome ém ${nome} e minha idade é ${idade}`)
+let n2:number = 2
+
+
+
+console.log(`SOMA: ${matematica.somar(n1,n2)} `)
+console.log(`divisão: ${matematica.dividir(n1,n2)}`)
+console.log(`multiplicação:${matematica.multiplicar(n1,n2)} `)
