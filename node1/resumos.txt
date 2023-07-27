@@ -1,0 +1,16 @@
+//os templates engine//
+
+*principais 2023
+
+-Pug
+-mustache.js *
+-Edge
+-EJS
+
+//npm importantes 
+
+*ts-node
+*nodemon
+*express
+
+//

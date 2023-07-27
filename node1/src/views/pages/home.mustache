@@ -1,0 +1,36 @@
+{{>partials/header}}
+
+    <p>
+        opa, tudo bem!!?? {{user.name}} vc tem {{user.age}} anos?
+    <p />
+
+        {{#showOld}}
+            opa tudo certo?
+        {{/showOld}}
+        {{^showOld}}
+             tudo bom???
+        {{/showOld}}
+
+        <hr />
+
+    <h2>lista de serviços</h2>
+
+    <ul>
+        {{#produts}}
+            <li>{{title}} - {{price}}</li>
+        {{/produts}}
+    </ul>
+
+    <hr />
+    <h2>frases bonitas</h2>
+    <ul>
+        {{#list}}
+            <li> {{.}} </li>
+        {{/list}}
+
+        {{^list}}
+            não a vagas
+        {{/list}}
+    </ul>
+
+    {{>partials/footer}}
