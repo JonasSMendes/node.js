@@ -1,4 +1,23 @@
-//os templates engine//
+////////////////////////////// server /////////////////////////////////////
+
+para definir a pagina pricipal é necessario importala e depois usar o seguinte comando 
+(" server.use(NOME DO SEU IMPORT); ") e pronto.
+
+para o servidor conseguir receber method POST é necessario uma configuração 
+(" server.use(express.urlencoded({extended: true})) ") assim está habilitado
+
+para não puxar o servidor da raiz dos arquivos até seu projeto usamos essa configuração
+(" server.use(express.static(path.join(__dirname, '../public'))) ") assim ele começa pela pasta
+public quando os arquivos forem mencionados, seria com um encurtador de URL.
+
+para habilitar o mustache em seu server é necessario usar a seguinte configuração 
+(" server.engine('mustache', mustache()) ") assim podera usar tranquilo.
+(" server.set('view engine', 'mustache'); ") usando essa você delimita onde as pastas
+com mustache estão.
+(" server.set('views', path.join(__dirname, 'views')); ") e aqui você encurta a URL 
+proveniente do mustache.
+
+////////////////////////// os templates engine ///////////////////////
 
 *principais 2023
 
@@ -7,10 +26,54 @@
 -Edge
 -EJS
 
-//npm importantes 
+//////////////////////////// npm importantes /////////////////////////
 
 *ts-node
 *nodemon
 *express
 
-//
+/////////////////////////////// req e res ////////////////////////////////
+
+req - pega as coisas da requisição que eu recebi junto com a requisição;
+res - é responsavel pelo que eu vou mandar depois que processei as informaçoes; 
+
+///////////////////////// recebendo dados de fora /////////////////
+
+*URL- usando uma variavel como esta (let name:string = req.query.nome as string;)
+podemos achar o valor digitado em um input ou form que desejar.
+
+////////////////////////////// GET , POST //////////////////////////////
+
+*GET - quando se faz uma requisição do tipo GET e é necessario pegar o valor 
+    se usa o (" query ")
+
+*POST - quando se faz uma requisição do tipo POST e é necessario pegar o valor 
+    se usa o (" body ")
+
+
+//////////////////////////////// MVC /////////////////////////////////////
+
+M = model
+v = view
+C = Controller
+
+sistema de organização de arqivos onde o ( C => V ) <= M 
+- separar casa arquivo no seu quadrado
+- juntar tudo para rodar o sistema
+
+C - a pasta Controller onde vc usa as funçoes das suas rotas e exporta apenas
+    o seu titulo.
+
+M - responsavel pelo processamento, ele armazena funçoes que podem ser exportadas 
+    para o controler.
+
+V - recebe todas as condiçoes e funçoes do Controller e mostra na tela.    
+
+
+////////////////// variaveis de ambiente ////////////////////
+
+dados guardados que vão se referir ao ambiente geral ao ambiente
+
+se intala um Lib chamada dotenv
+
+npm install dotenv 

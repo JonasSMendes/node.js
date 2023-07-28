@@ -1,7 +1,9 @@
+import dotenv from 'dotenv'
 import express, {Response, Request} from 'express'
 import path from 'path';
 import mustache from 'mustache-express'
 
+dotenv.config();
 
 import mainRouter from './routes/index'
 
@@ -13,6 +15,7 @@ server.engine('mustache', mustache())
 
 server.use(express.static(path.join(__dirname, '../public')))
 
+server.use(express.urlencoded({extended: true}))
 
 server.use(mainRouter);
 
@@ -20,4 +23,4 @@ server.use((req:Request,res:Response)=>{
     res.status(404).send('pagina não encontrada')
 })
 
-server.listen(80);
+server.listen(process.env.PORT);
