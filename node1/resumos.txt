@@ -77,3 +77,7 @@ dados guardados que vão se referir ao ambiente geral ao ambiente
 se intala um Lib chamada dotenv
 
 npm install dotenv 
+
+dotenv.config();
+
+server.listen(process.env."NOME DO SEU ENV"); exemplo: PORT
