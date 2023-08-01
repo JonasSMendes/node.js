@@ -1,11 +1,20 @@
 import { Response, Request } from "express";
 import { Product } from "../models/Product";
 
-export const home =  (req: Request,res:Response)=>{
+import {sequelize} from '../instances/mysql'
+
+export const home = async (req: Request,res:Response)=>{
     //pegar as insformçãoes do banco de dados
     //organiza as informações
     //envia para o template engine
     
+    try{
+        await sequelize.authenticate();
+        console.log('conexão estabelicida')
+    }catch(error){
+        console.log('deu erro : ', error)
+    }
+
     let user = {
         name: 'jonas',
         age: 22
