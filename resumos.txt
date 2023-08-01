@@ -81,3 +81,28 @@ npm install dotenv
 dotenv.config();
 
 server.listen(process.env."NOME DO SEU ENV"); exemplo: PORT
+
+
+//////////////////// banco de dados ////////////////////////////
+
+SERVIDOR - software que é o proprio banco de dados
+CLIENT - software que usa o servidor , ou seja, usa o banco de dados
+
+-inserir dados
+-ler dados
+-excluir dados
+-alterar dados
+
+-SQL,postgreSQL
+
+-os 2 são open-source 
+- suportam todos* os sistemas e as principais linguagens 
+
+--performance---
+
+geralmente para consultas grandes ou mais complexas o postgreSQL 
+é mais rapido
+
+SQL é mais rapido para pequenos volumes e consultas simples 
+
+
