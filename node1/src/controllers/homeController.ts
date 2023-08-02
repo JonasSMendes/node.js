@@ -1,19 +1,22 @@
 import { Response, Request } from "express";
 import { Product } from "../models/Product";
+import { Op } from "sequelize";
 
-import {sequelize} from '../instances/mysql'
+import { User } from "../models/User";
+
 
 export const home = async (req: Request,res:Response)=>{
     //pegar as insformçãoes do banco de dados
     //organiza as informações
     //envia para o template engine
     
-    try{
-        await sequelize.authenticate();
-        console.log('conexão estabelicida')
-    }catch(error){
-        console.log('deu erro : ', error)
-    }
+    let users = await User.findAll({
+        where: {
+          name:{
+            [Op.like]: 'p%'
+          }
+        }
+    });
 
     let user = {
         name: 'jonas',
@@ -33,6 +36,7 @@ export const home = async (req: Request,res:Response)=>{
         showOld,
         produts:list,
         Expensives: expensiveList,
-        lists:[]
+        lists:[],
+        users
     })
 }
