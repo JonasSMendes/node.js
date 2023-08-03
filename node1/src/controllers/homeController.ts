@@ -8,17 +8,28 @@ import { User } from "../models/User";
 export const home = async (req: Request,res:Response)=>{
     //pegar as insformçãoes do banco de dados
     //organiza as informações
-    //envia para o template engine
-    
-    let users = await User.findAll({
+    //envia para o template engine   
+   let users = await User.findAll({
         where: {
-          name:{
-            [Op.like]: 'p%'
+          age:{
+            [Op.gte]: 0
           }
-        }
+        },
+        order: [
+           
+        ],
+        //  offset: 0,
+        // limit: 
+
     });
 
-    let user = {
+    /* const use = User.build({
+        name: 'fulano',
+        age: 25
+    });
+      await use.save();
+    */
+let user = {
         name: 'jonas',
         age: 22
     }
