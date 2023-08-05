@@ -13,12 +13,11 @@
 
     <hr />
 
-     <form method:'GET'>
+     <form method= "POST">
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome" required><br><br>
         
-        <label for="idade">Idade:</label>
-        <input type="text" id="idade" name="idade" required><br><br>
+       
         
         <input type="submit" value="Enviar">
     </form>
@@ -30,7 +29,10 @@
     <ul>
         {{#users}}
             <li>
-                {{name}} - idade -{{age}} 
+                {{name}} - idade -{{age}}
+                <a>+</a> 
+                <a>-</a> 
+                <a>excluir</a>  
             </li>
         {{/users}}
     </ul>

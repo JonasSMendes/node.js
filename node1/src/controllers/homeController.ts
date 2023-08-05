@@ -6,29 +6,57 @@ import { User } from "../models/User";
 
 
 export const home = async (req: Request,res:Response)=>{
-    //pegar as insformçãoes do banco de dados
-    //organiza as informações
-    //envia para o template engine   
-   let users = await User.findAll({
-        where: {
-          age:{
-            [Op.gte]: 0
-          }
-        },
-        order: [
-           
-        ],
-        //  offset: 0,
-        // limit: 
 
-    });
 
-    /* const use = User.build({
-        name: 'fulano',
-        age: 25
-    });
-      await use.save();
-    */
+  //deletar
+ await User.destroy({
+    where:{
+      age:{
+      [Op.lt]: 18
+    }
+    }
+  })
+
+
+//achar tudo
+  let result = await User.findAll({
+    where:{
+      id: 7
+    }
+  })
+  if(result.length > 0){
+    let usuario = result[0];
+
+    usuario.age = 70;
+    usuario.name = 'testeteste'
+    await usuario.save()
+  }
+
+  //atualizar
+   await User.update({name: 'sr chico'}, {
+    where:{
+      id: 4
+    }
+   })
+
+   let users = await User.findAll();
+    
+   
+   //adicionar////////////////////////////////////
+/*
+   let name = ''
+   if(req.body.nome){
+      let addNome = req.body.nome
+
+      name = addNome;
+   }
+   const use= await User.create({
+    name: name,
+  })
+*/
+   
+ /////////////////////////////////////// 
+
 let user = {
         name: 'jonas',
         age: 22
@@ -41,13 +69,16 @@ let user = {
 
 
     let list = Product.getAll();
+
     let expensiveList = Product.getFromPriceAfter(12);
+
     res.render('pages/home', {
         user: user,
         showOld,
         produts:list,
         Expensives: expensiveList,
         lists:[],
-        users
+        users,
+        
     })
 }
