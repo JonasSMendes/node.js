@@ -30,10 +30,18 @@
         {{#users}}
             <li>
                 {{name}} - idade -{{age}}
-                <a>+</a> 
-                <a>-</a> 
-                <a>excluir</a>  
+                <a href="/usuario/{{id}}/mais">+</a> 
+                <a href="/usuario/{{id}}/menos">-</a> 
+                <a href="/usuario/{{id}}/excluir">excluir</a>  
             </li>
+            {{#use}}
+                 <li>
+                    {{name}} - idade -{{age}}
+                    <a href="/usuario/{{id}}/mais">+</a> 
+                    <a href="/usuario/{{id}}/menos">-</a> 
+                    <a href="/usuario/{{id}}/excluir">excluir</a>  
+                </li>
+            {{/use}}
         {{/users}}
     </ul>
 

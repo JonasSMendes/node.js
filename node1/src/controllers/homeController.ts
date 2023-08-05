@@ -49,12 +49,11 @@ export const home = async (req: Request,res:Response)=>{
       let addNome = req.body.nome
 
       name = addNome;
-   }
-   const use= await User.create({
-    name: name,
+    }
+   const use = await User.create({
+     name: name,
   })
 */
-   
  /////////////////////////////////////// 
 
 let user = {
