@@ -13,7 +13,18 @@ export const User = sequelize.define<UserInstance>('User',{
         type:DataTypes.INTEGER
     },
     name:{
-        type:DataTypes.STRING
+        type:DataTypes.STRING,
+        get(){
+            const row = this.getDataValue('name');
+            return row.toUpperCase();
+        }
+    },
+    firtNameLetter:{
+        type:DataTypes.VIRTUAL,
+        get(){
+            let name =  this.getDataValue('name').toUpperCase()
+            return name[0]
+        }
     },
     age:{
         type:DataTypes.INTEGER,
