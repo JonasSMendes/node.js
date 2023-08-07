@@ -1,15 +1,18 @@
 import { Response, Request } from "express";
 import { Product } from "../models/Product";
 import { Op } from "sequelize";
-
-import { User } from "../models/User";
+import User from "../models/User";
 
 
 export const home = async (req: Request,res:Response)=>{
 
 
+  let usuario = await User.find({});
+  console.log('usuarios', usuario);
+
+
   //deletar
- await User.destroy({
+/* await User.destroy({
     where:{
       age:{
       [Op.lt]: 18
@@ -55,7 +58,7 @@ export const home = async (req: Request,res:Response)=>{
   })
 */
  /////////////////////////////////////// 
-
+/*
 let user = {
         name: 'jonas',
         age: 22
@@ -66,18 +69,18 @@ let user = {
         showOld = true
     }
 
-
+*/
     let list = Product.getAll();
 
     let expensiveList = Product.getFromPriceAfter(12);
 
     res.render('pages/home', {
-        user: user,
-        showOld,
-        produts:list,
-        Expensives: expensiveList,
+      //  user: user,
+      //  showOld,
+      //  produts:list,
+      //  Expensives: expensiveList,
         lists:[],
-        users,
+      //  users,
         
     })
 }

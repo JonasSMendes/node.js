@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { User } from "../models/User";
+import { Userss } from "../models/Userss";
 
 export const name =  (req: Request,res:Response)=>{
 
@@ -36,7 +36,7 @@ export const addUsuario = async (req: Request,res:Response)=>{
 
     let name: string = req.body.nome;
     
-    const use= await User.create({
+    const use= await Userss.create({
         name: name,
       })
 
@@ -49,7 +49,7 @@ export const addIdade = async (req: Request,res:Response)=>{
 
     let id: string = req.params.id;
 
-    let results = await User.findAll({
+    let results = await Userss.findAll({
         where:{
             id
         }
@@ -68,7 +68,7 @@ export const diminuirIdade = async (req: Request,res:Response)=>{
 
     let id: string = req.params.id;
 
-    let results = await User.findAll({
+    let results = await Userss.findAll({
         where:{
             id
         }
@@ -87,7 +87,7 @@ export const excluir = async (req: Request,res:Response)=>{
 
     let id: string = req.params.id;
 
-    await User.destroy({
+    await Userss.destroy({
         where:{
             id
         }

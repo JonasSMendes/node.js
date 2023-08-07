@@ -1,36 +1,30 @@
- import { Model, DataTypes } from "sequelize";
-import { sequelize } from '../instances/mysql';
+import {Schema, model, connection, Model} from 'mongoose'
 
-interface UserInstance extends Model  {
-    id:number,
-    name:string
-    age:number
+type UserType ={
+    email: string,
+    age:number,
+    interests:[string]
+    name:{
+        firstName:string,
+        LastName:string
+    }
 }
 
-export const User = sequelize.define<UserInstance>('User',{
-    id:{
-        primaryKey: true,
-        type:DataTypes.INTEGER
-    },
+const schema = new Schema<UserType>({
+    email: {type: String, required: true},
+    age: {type:Number, required:true},
+    interests:[String],
     name:{
-        type:DataTypes.STRING,
-        get(){
-            const row = this.getDataValue('name');
-            return row.toUpperCase();
-        }
-    },
-    firtNameLetter:{
-        type:DataTypes.VIRTUAL,
-        get(){
-            let name =  this.getDataValue('name').toUpperCase()
-            return name[0]
-        }
-    },
-    age:{
-        type:DataTypes.INTEGER,
-        defaultValue: 18
-    },
-},{
-    tableName:'users',
-    timestamps: false
+        firstName:{type:String, required:true},
+        LastName:String
+    }
 });
+
+const modelName: string = 'User';
+
+export default
+    (connection && connection.models[modelName])
+    ? 
+    connection.models[modelName] as Model<UserType>
+    : 
+    model<UserType>(modelName, schema)
