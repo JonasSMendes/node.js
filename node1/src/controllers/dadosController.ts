@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { Userss } from "../models/Userss";
+import User from "../models/User";
 
 export const name =  (req: Request,res:Response)=>{
 
@@ -95,3 +96,23 @@ export const excluir = async (req: Request,res:Response)=>{
 
     res.redirect('/')
 }
+
+export const addUserAction = async (req: Request,res:Response) =>{
+
+    let firstName:string = req.body.firstName
+    let LastName:string = req.body.LastName
+    let email:string = req.body.email
+    let age:number = req.body.age
+    let interests:string[] = req.body.interests.split(',')
+
+    let NewUser = new User();
+    NewUser.name = {firstName: firstName, LastName: LastName},
+    NewUser.email= email,
+    NewUser.age = age,
+    NewUser.interests = interests
+    NewUser.save()
+    
+  
+    res.redirect('/')
+    
+  }

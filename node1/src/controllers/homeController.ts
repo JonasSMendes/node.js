@@ -2,14 +2,39 @@ import { Response, Request } from "express";
 import { Product } from "../models/Product";
 import { Op } from "sequelize";
 import User from "../models/User";
+import { addUserAction } from "./dadosController";
 
 
 export const home = async (req: Request,res:Response)=>{
 
+//mongo
+/*
+  let usuario = await User.find({
+    age: {$gte: 18}
+  }).sort({ age: 1 }).skip(0).limit(2); 
+ // console.log('usuarios', usuario);
 
-  let usuario = await User.find({});
-  console.log('usuarios', usuario);
+ //inserir dados
+/*
+ let NewUser = await User.create({
+  name: {firstName: 'pedro', lastName: 'moureira'},
+  email: 'mona@gmail.com',
+  age:31,
+  interests: ['batucar', 'viajar']
+ })
+*/
+/*
+let NewUser = new User();
 
+NewUser.name = {firstName: 'joana', LastName: 'silva'},
+NewUser.email= 'jojo@gmail.com',
+NewUser.age = 19,
+NewUser.interests = ['dançar', 'pular']
+let resultado = await NewUser.save()
+
+console.log(resultado)
+*/
+/////////////////////////////////////////////////////////////////////////////////////////////
 
   //deletar
 /* await User.destroy({
@@ -70,9 +95,10 @@ let user = {
     }
 
 */
-    let list = Product.getAll();
-
-    let expensiveList = Product.getFromPriceAfter(12);
+    //let list = Product.getAll();
+    //let expensiveList = Product.getFromPriceAfter(12);
+  
+   let users = await User.find({})
 
     res.render('pages/home', {
       //  user: user,
@@ -80,7 +106,7 @@ let user = {
       //  produts:list,
       //  Expensives: expensiveList,
         lists:[],
-      //  users,
-        
+        users
     })
 }
+

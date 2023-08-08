@@ -1,13 +1,15 @@
 import { Router } from "express";
 import { home } from "../controllers/homeController";
 import { contato, sobre } from "../controllers/infoControler";
-import { name, AgeGET, AgePOST,addIdade,diminuirIdade,excluir,addUsuario } from "../controllers/dadosController";
+import { name, AgeGET, AgePOST,addIdade,diminuirIdade,excluir,addUsuario,addUserAction } from "../controllers/dadosController";
 
 
 
 const router = Router()
 
 router.get('/', home)
+
+router.post('/novo-usuario', addUserAction);
 
 router.get('/contato', contato)
 router.get('/sobre', sobre)

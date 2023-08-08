@@ -13,14 +13,24 @@
 
     <hr />
 
-     <form method= "POST">
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required><br><br>
-        
-       
-        
-        <input type="submit" value="Enviar">
-    </form>
+<form action="/novo-usuario" method="POST">
+    <label for="nome">Nome:</label><br>
+    <input type="text" id="nome" name="firstName"><br><br>
+
+    <label for="sobrenome">Sobrenome:</label><br>
+    <input type="text" id="sobrenome" name="LastName"><br><br>
+
+    <label for="idade">Idade:</label><br>
+    <input type="text" id="idade" name="age"><br><br>
+
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email"><br><br>
+
+    <label for="comentario">interesses, coloque virgula entre eles.:</label><br>
+   <input type="text" id="sobrenome" name="interests"><br><br>
+
+    <input type="submit" value="Inserir">
+</form>
 
     <hr />
 
@@ -29,52 +39,9 @@
     <ul>
         {{#users}}
             <li>
-                {{name}} - idade -{{age}} - primeira letra {{firtNameLetter}}
-                <a href="/usuario/{{id}}/mais">+</a> 
-                <a href="/usuario/{{id}}/menos">-</a> 
-                <a href="/usuario/{{id}}/excluir">excluir</a>  
+                {{name.firstName}} - idade -{{age}}
             </li>
-            {{#use}}
-                 <li>
-                    {{name}} - idade -{{age}}
-                    <a href="/usuario/{{id}}/mais">+</a> 
-                    <a href="/usuario/{{id}}/menos">-</a> 
-                    <a href="/usuario/{{id}}/excluir">excluir</a>  
-                </li>
-            {{/use}}
         {{/users}}
     </ul>
 
-
-
-
-
-    <h2>lista de serviços</h2>
-
-    <ul>
-        {{#produts}}
-            <li>{{title}} - {{price}}</li>
-        {{/produts}}
-    </ul>
-
-    <h2>a partir de 12 mirre</h2>
-
-    <ul>
-        {{#Expensives}}
-            <li>{{title}} - {{price}}</li>
-        {{/Expensives}}
-    </ul>
-
-    <hr />
-    <h2>frases bonitas</h2>
-    <ul>
-        {{#list}}
-            <li> {{.}} </li>
-        {{/list}}
-
-        {{^list}}
-            não a vagas
-        {{/list}}
-    </ul>
-
-    {{>partials/footer}}
+{{>partials/footer}}

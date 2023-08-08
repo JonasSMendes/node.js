@@ -1,9 +1,10 @@
 import {Schema, model, connection, Model} from 'mongoose'
+import { type } from 'os'
 
 type UserType ={
     email: string,
     age:number,
-    interests:[string]
+    interests:string[]
     name:{
         firstName:string,
         LastName:string
@@ -16,7 +17,7 @@ const schema = new Schema<UserType>({
     interests:[String],
     name:{
         firstName:{type:String, required:true},
-        LastName:String
+        LastName: {type:String}
     }
 });
 
