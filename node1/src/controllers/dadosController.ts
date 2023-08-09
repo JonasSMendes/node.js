@@ -116,3 +116,19 @@ export const addUserAction = async (req: Request,res:Response) =>{
     res.redirect('/')
     
   }
+
+  export const addAgeAction = async (req: Request,res:Response) =>{
+    let id = req.params.id
+     
+    let user = await User.findOne({_id: id})
+
+    if(user){
+        user.age++
+        await user.save()
+    }else{
+        console.log('usuario não encontrado')
+    }
+
+    res.redirect('/')
+
+  }

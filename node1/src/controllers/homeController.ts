@@ -98,7 +98,13 @@ let user = {
     //let list = Product.getAll();
     //let expensiveList = Product.getFromPriceAfter(12);
   
-   let users = await User.find({})
+   let paulo = await User.findOne({name: 'name.firstName'});
+
+   let user = await User.findOne({email: ''})
+
+   
+
+   let users = await User.find({}).sort({'name.firstName': 1})
 
     res.render('pages/home', {
       //  user: user,
