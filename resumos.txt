@@ -105,4 +105,19 @@ geralmente para consultas grandes ou mais complexas o postgreSQL
 
 SQL é mais rapido para pequenos volumes e consultas simples 
 
+//////////////////////////// API //////////////////////////////////////////
+
+webService = Serviços de web
+
+--REST 
+---transferencia de estado Representacional 
+
+
+- RESFul
+---------------------------------------
+method:
+GET - Pegar coisas da API 
+PUT - fazer uma alteração 
+POST - Adicionar informação
+DELETE - apagar
 
