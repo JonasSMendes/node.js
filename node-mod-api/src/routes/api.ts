@@ -1,25 +1,15 @@
 import { match } from "assert";
 import { Router } from "express";
-
+import { ping, random, name } from "../controllers/apicontroller";
+import {createPhrase} from '../controllers/phrasesApi'
 
 const router = Router();
 
+router.get('/ping', ping);
+router.get('/random', random);
+router.get('/nome/:nome', name);
 
-
-router.get('/ping', (req, res)=>{
-    res.json({pong: true})
-});
-
-router.get('/random', (req, res)=>{
-    let nRand:number = Math.floor(Math.random() * 100);
-    res.json(nRand);
-})
-
-router.get('/nome/:nome', (req, res)=>{
-    let nome: string = req.params.nome
-
-    res.json(nome);
-})
+router.post('/frases', createPhrase )
 
 
 export default router
