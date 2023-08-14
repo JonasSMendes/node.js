@@ -1,8 +1,10 @@
 CRUD para frases
 
-POST /frases - criar frases novas
-GET /frases - listar todos as frases
-GET /frases/123 - pegar uma frase 
-PUT /frase/123 - editar frases 
-DELETE /frase/123 - excluir frases
+ 0k - POST /frases - criar frases novas
+ 0k - GET /frases - listar todos as frases
+ 0k - GET /frases/123 - pegar uma frase 
+ 0k - PUT /frase/123 - editar frases 
+ 0k - DELETE /frase/123 - excluir frases
+
+ get /frase/aleatoria - pega uma frase aleatoria.
 
