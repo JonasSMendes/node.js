@@ -15,3 +15,10 @@ export const name = (req: Request, res: Response)=>{
     let nome: string = req.params.nome
     res.json(nome);
 }
+
+export const uploadFile = (req: Request, res: Response)=>{
+    console.log(req.files)
+
+
+    res.json({})
+}
