@@ -1,4 +1,6 @@
+import {unlink} from 'fs/promises'
 import { Request, Response } from "express";
+import sharp from "sharp";
 
 import { Phrase } from "../models/Phrase";
 
@@ -16,9 +18,20 @@ export const name = (req: Request, res: Response)=>{
     res.json(nome);
 }
 
-export const uploadFile = (req: Request, res: Response)=>{
-    console.log(req.files)
+export const uploadFile = async (req: Request, res: Response)=>{
+   if(req.file){
+        const filename = `${req.file.filename}.jpg`
 
+        await sharp(req.file.path)
+            .resize(500)
+            .toFormat('jpeg')
+            .toFile(`./public/media${filename}`);
 
-    res.json({})
+        await unlink(req.file.path);
+
+        res.json({image: `${filename}`})
+   }else{
+        res.status(400)
+        res.json({error: "algo deu errado"})    
+   }
 }

@@ -5,7 +5,7 @@ import multer from "multer";
 
 import { ping, random, name, uploadFile } from "../controllers/apicontroller";
 import {createPhrase,listPhrases, getPhrase, updatePhrase, deletePhrase, randomPhrase } from '../controllers/phrasesApi'
-
+/*
 const storageConfig = multer.diskStorage({
     destination: (req, file, cb)=>{
         cb(null, './tmp');
@@ -16,9 +16,14 @@ const storageConfig = multer.diskStorage({
         cb(null, `${randomName+Date.now()}.jpg`);
     }
 })
-
+*/
 const upload = multer({
-    storage: storageConfig
+    dest: './tmp',
+    fileFilter: (req, file, cb)=>{
+        const alloewd: string[] = ['image/jpg', 'image/png']
+        cb(null, alloewd.includes(file.mimetype));
+    },
+    limits: {fieldSize: 1000000}
 })
 
 const router = Router();
